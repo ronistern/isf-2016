@@ -56,8 +56,7 @@
 
 % Test
 
-
-Data mules~\cite{shah2003data} is a low-cost technology for maintaining sparse connectivity. 
+%Data mules~\cite{shah2003data} is a low-cost technology for maintaining sparse connectivity. 
 
 
 
@@ -66,7 +65,7 @@ Data mules~\cite{shah2003data} is a low-cost technology for maintaining sparse c
 Imagine a smart home with a vacuum cleaning robot, a floor scrubbing robot, and a floor mopping robot (Figure~\ref{fig:example} illustrates this setting). This team of robots is committed to the overall mission of cleaning the house, with each robot having a specific task to perform: vacuum cleaning, floor scrubbing, or floor mopping. To accomplish their tasks, these robots must plan, either upfront or on-the-fly, the individual actions they intend to perform. In many cases, they must also coordinate these individual actions if they are to succeed in their overall mission. Similar issues arise in many other multi-agent systems (MAS), including automated warehouses~\cite{martinez2010autonomous,vivaldini2011intelligent} and teams of delivery robots~\cite{coltin2014scheduling}.  Analogous multi-agent planning (MAP) problems also arise in non-robotic scenarios, including teams of web crawlers~\cite{chiu2005towards,pant2002myspiders,sato2012agent} and digital entertainment~\cite{jaklin2013way}.  
 %groups of AI characters in digital role-playing games~\cite{mott2006u,botea2013pathfinding,jaklin2013way}.  
 %The importance of adequate MAP mechanisms for group activities is recognized in a range of formal models of teamwork~\cite{grant2005formalApproaches} and is becoming increasingly important with the greater prevalence of household and industrial robots as well as other types of multi-agent systems. 
-The importance of adequate MAP mechanisms for group activities is recognized in formal models of teamwork and is becoming increasingly important with the greater prevalence of household and industrial robots as well as other types of MAS. %~\cite{grant2005formalApproaches}
+The importance of adequate MAP mechanisms for group activities is recognized in formal models of teamwork and is becoming increasingly important with the greater prevalence of MAS in practical applications.  %household and industrial robots as well as other types of MAS. %~\cite{grant2005formalApproaches}
 
 
 %MAP algorithms are %, and in mixed networks of humans and machines~\cite{amir2013collaborative}.The entities that act in these scenarios (robots, crawlers, etc.) are generally called {\bf agents} and the task of planning for them is called {\bf multi-agent planning} (MAP). 
@@ -92,7 +91,6 @@ represented in a dynamic Bayesian network~\cite{nair2005networked,witwicki2010in
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.7\columnwidth]{RunningExample_cropped.pdf}
-\vspace{-0.4cm}
 \caption{\small{An illustration of our smart home example. The vacuum cleaning robot, floor scrubbing robot, and floor mopping robot are marked by a circle with the letter V, S, and M, respectively. Collisions should be avoided and it is easier to scrub or mop the floor after it is vacuumed. Thus, to clean the house efficiently, a MAP algorithm is needed to coordinate the robots. The figure illustrates a start of a possible joint plan in which robot V starts immediately (at time=0) to vacuum the floor (vacuumed tiles are marked by V), while robot S decided not to scrub any floor that was not vacuumed, finishing to scrub his first floor tile time=3 (marked by adding the letter S on the tile). }}
 \label{fig:example}
 \end{figure}
@@ -378,11 +376,11 @@ Single-agent planning algorithms these days are very efficient, so generating pr
 \begin{figure}%
 \centering
 \includegraphics[width=0.8\columnwidth]{free-space_cropped.pdf}%
-\vspace{-0.4cm}
-\caption{{\small An example of generating provisional plans with the generalized free space assumption on a simplified version of our smart home example in Figure~\ref{fig:example} (using the same notations). 
+\caption{\small An example of generating provisional plans with the generalized free space assumption on a simplified version of our smart home example in Figure~\ref{fig:example} (using the same notations). 
 Each provisional plan is displayed (robot V's plan in the upper line and robot S's plan in the lower line). The generalized free space assumption manifests in that (1) both plans ignore collisions and (2) robot S assumes all tiles are vacuumed. Indeed, 3 PIFs exists in this provisional plan: tiles (2,1) and (2,2) planned for scrubbing at time 0 and 1 will not be vacuumed in time (positive PIF) and a collision is expected at time 3 (negative PIF). Resolving them is discussed in later sections.}}
 \label{fig:free-space}
 \end{figure}
+
 
 
 Fully coordinated planning and uncoordinated planning are two extremes of a spectrum of possible ways to generate provisional plans. We will also consider hybrid approaches, including:
@@ -431,7 +429,10 @@ and the negative PIF is $\langle [V,S], N, \{ \move{V}{3}{(2,2)}, \move{S}{3}{(2
 
 %If the provisional plans were generated by planning under the generalized free-space assumption, then searching for PIFs is, in a sense, checking the validity of this assumption. %e generalized free-space assumption adopted at the time that these plans were generated. 
 Searching for PIFs in a set of provisional plans is, in a sense, checking the validity of the assumptions (e.g., the generalized free-space assumption) adopted at the time that these plans were generated. 
-The methods we will develop for identifying PIFs and the complexity of these methods will vary, depending on the type of PIF (negative or positive) and the MAP formalism used. For instance, identifying PIFs in a temporal planning setting is trivial: every action in the provisional plans is associated with a specific time, and PIFs can be detected by simulating the execution of the provisional plans.  For MAP models that are not temporal, identifying PIFs is more challenging, requiring, methods for identifying causal-link threats and open preconditions~\cite{cox2009efficient}. Clearly, an open precondition or an unresolvable causal-link threat pose a PIF. However, additional PIFs may be detected if we have some knowledge about the duration of performing each action and the time when agents plan to perform them. 
+The methods we will develop for identifying PIFs and the complexity of these methods will vary, depending on the type of PIF (negative or positive) and the MAP formalism used. For instance, identifying PIFs in a temporal planning setting is trivial: every action in the provisional plans is associated with a specific time, and PIFs can be detected by simulating the execution of the provisional plans.  For MAP models that are not temporal, identifying PIFs is more challenging, requiring, methods for identifying causal-link threats and open preconditions~\cite{cox2009efficient}. 
+
+
+Clearly, an open precondition or an unresolvable causal-link threat pose a PIF. However, additional PIFs may be detected if we have some knowledge about the duration of performing each action and the time when agents plan to perform them. 
 
 
 \subsubsection{Methods for Resolving PIFs}
@@ -449,8 +450,7 @@ Coordinating agents by adding incrementally adding constraints has been explored
 \begin{figure}%
 \centering
 \includegraphics[width=0.8\columnwidth]{IRT-example_cropped}%
-\vspace{-0.4cm}
-\caption{{\small An IRT for solving the problem in Figure~\ref{fig:free-space}. Rectangles represent IRT nodes: the upper part of the rectangle shows the provisional plans, the lower part shows the PIFs, and we do not show the constraints to simplify the presentation. The IRT root node consists of the provisional plans generated using the generalized free-space assumption as shown in Figure~\ref{fig:free-space}. Every branch corresponds to choosing a PIF and resolving it. The chosen PIF and resolution method is given in the rounded rectangles. Any tree search algorithm can traverse this tree, and more branches can be generated. The goal node is an IRT node representing a joint plan without any PIF, and our example IRT has two possible paths to it.}}
+\caption{\small{An IRT for solving the problem in Figure~\ref{fig:free-space}. Rectangles represent IRT nodes: the upper part of the rectangle shows the provisional plans, the lower part shows the PIFs, and we do not show the constraints to simplify the presentation. The IRT root node consists of the provisional plans generated using the generalized free-space assumption as shown in Figure~\ref{fig:free-space}. Every branch corresponds to choosing a PIF and resolving it. The chosen PIF and resolution method is given in the rounded rectangles. Any tree search algorithm can traverse this tree, and more branches can be generated. The goal node is an IRT node representing a joint plan without any PIF, and our example IRT has two possible paths to it.}}
 \label{fig:irt-example}%
 \end{figure}
 
@@ -621,7 +621,7 @@ The competition organizers graciously made the code for all competing planning a
 {\bf 1. Search-Based Planning for Teams of Robots.}
 % We will evaluate on search-based multi-robot planning
 %Planning for a team of robots provides one of the motivations for this research. Implementing IOP on real robots is beyond the scope of this research and requires additional expertise and funds. As a step towards realizing IOP on robot teams, we will implement IOP on top of the Search-Based Planning Library (SBPL)~\cite{likhachev2010sbpl}, a successful framework for applying search-based planning algorithms for robots.
-Implementing IOP on real robots is beyond the scope of this research and requires additional expertise and funds. Bust, as a step towards realizing IOP on robot teams we will implement IOP on top of the Search-Based Planning Library (SBPL)~\cite{likhachev2010sbpl}, a successful framework for applying search-based planning algorithms for robots. SBPL is integrated with the Robotic Operating System (ROS), to allow relatively easy deployment to real robots and integration with standard ROS simulators. It was used in a range of robotic platforms such as a single robotic arm~\cite{stern2014potential,aine2015learning}, multiple robotic arms~\cite{cohen2014planning}, Willow Garage’s PR2~\cite{phillips2012graphs}, and an autonomous vehicle~\cite{likhachev2009planning}. We have started to develop a multi-robot extension of SBPL (MR-SBPL) and a preliminary study in which we compared planning with \astar\ to a simplfied version of IOP showed promising results. 
+Implementing IOP on real robots is beyond the scope of this research and requires additional expertise and funds. Bust, as a step towards realizing IOP on robot teams we will implement IOP on top of the Search-Based Planning Library (SBPL)~\cite{likhachev2010sbpl}, a successful framework for applying search-based planning algorithms for robots. SBPL is integrated with the Robotic Operating System (ROS), to allow relatively easy deployment to real robots and integration with standard ROS simulators. It was used in a range of robotic platforms such as a single robotic arm~\cite{stern2014potential,aine2015learning}, multiple robotic arms~\cite{cohen2014planning}, Willow Garage’s PR2~\cite{phillips2012graphs}, and an autonomous vehicle~\cite{likhachev2009planning}. We have started to develop a multi-robot extension of SBPL (MR-SBPL) and a preliminary study in this domain where we compared planning with \astar\ to a simplified version of IOP showed promising results. 
 %in a preliminary study compared planning with \astar\ to a simplified version of IOP. The particular domain was a MAPF variant: every robot had a goal location it needed to reach, and the state variables were $x$, $y$, and $\theta$, where $\theta$ is the orientation of the robot. On an experiment with 10 robots on randomly chosen start and goal locations that were 10 steps afar, we observed a speedup of a factor of 2 for IOP over \astar . In the proposed research, we will continue this study, extending MR-SBPL to richer domains with positive PIFs and non-static allocation of goals to agents. Note that we do not presume to develop real-life robotic applications in the proposed research as that would require dealing with various control issues (action failures, inaccurate sensors etc.). 
 
 %We have started to develop a multi-robot extension of SBPL (MR-SBPL) and in a preliminary study compared planning with \astar\ to a simplified version of IOP. The particular domain was a MAPF variant: every robot had a goal location it needed to reach, and the state variables were $x$, $y$, and $\theta$, where $\theta$ is the orientation of the robot. On an experiment with 10 robots on randomly chosen start and goal locations that were 10 steps afar, we observed a speedup of a factor of 2 for IOP over \astar . In the proposed research, we will continue this study, extending MR-SBPL to richer domains with positive PIFs and non-static allocation of goals to agents. Note that we do not presume to develop real-life robotic applications in the proposed research as that would require dealing with various control issues (action failures, inaccurate sensors etc.). 

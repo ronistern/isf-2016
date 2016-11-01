@@ -57,8 +57,13 @@
 % Test
 
 
+Data mules~\cite{shah2003data} is a low-cost technology for maintaining sparse connectivity. 
+
+
+
+
 % The MAP problem and how much it is important and applied 
-Imagine a smart home that has a vacuum cleaning robot, a floor scrubbing robot, and a floor mopping robot (Figure~\ref{fig:example} illustrates this setting). This team of robots is committed to the overall mission of cleaning the house, with each robot having a specific task to perform: vacuum cleaning, floor scrubbing, or floor mopping. To accomplish their tasks, these robots must plan, either upfront or on-the-fly, the individual actions they intend to perform. In many cases, they must also coordinate these individual actions if they are to succeed in their overall mission. Similar issues arise in many other multi-agent systems (MAS), including automated warehouses~\cite{martinez2010autonomous,vivaldini2011intelligent} and teams of delivery robots~\cite{coltin2014scheduling}.  Analogous multi-agent planning (MAP) problems also arise in non-robotic scenarios, including teams of web crawlers~\cite{chiu2005towards,pant2002myspiders,sato2012agent} and digital entertainment~\cite{jaklin2013way}.  
+Imagine a smart home with a vacuum cleaning robot, a floor scrubbing robot, and a floor mopping robot (Figure~\ref{fig:example} illustrates this setting). This team of robots is committed to the overall mission of cleaning the house, with each robot having a specific task to perform: vacuum cleaning, floor scrubbing, or floor mopping. To accomplish their tasks, these robots must plan, either upfront or on-the-fly, the individual actions they intend to perform. In many cases, they must also coordinate these individual actions if they are to succeed in their overall mission. Similar issues arise in many other multi-agent systems (MAS), including automated warehouses~\cite{martinez2010autonomous,vivaldini2011intelligent} and teams of delivery robots~\cite{coltin2014scheduling}.  Analogous multi-agent planning (MAP) problems also arise in non-robotic scenarios, including teams of web crawlers~\cite{chiu2005towards,pant2002myspiders,sato2012agent} and digital entertainment~\cite{jaklin2013way}.  
 %groups of AI characters in digital role-playing games~\cite{mott2006u,botea2013pathfinding,jaklin2013way}.  
 %The importance of adequate MAP mechanisms for group activities is recognized in a range of formal models of teamwork~\cite{grant2005formalApproaches} and is becoming increasingly important with the greater prevalence of household and industrial robots as well as other types of multi-agent systems. 
 The importance of adequate MAP mechanisms for group activities is recognized in formal models of teamwork and is becoming increasingly important with the greater prevalence of household and industrial robots as well as other types of MAS. %~\cite{grant2005formalApproaches}
@@ -611,117 +616,44 @@ Above we discussed ways to develop a lower bounding $h(n)$ and shown that in som
 \subsection{Methodology and Experimental Evaluation}
 \label{sec:methodology}
 The main MAP model we will use for evaluating IOP and its different components is MA-STRIPS~\cite{brafman2013complexity}. MA-STRIPS can be viewed as the simplest extension of the classical STRIPS planning formalism. An MA-STRIPS problem is defined exactly like a STRIPS problem, with the only difference being that in MA-STRIPS each agent has a set of actions it can perform. MA-STRIPS is a relatively recent MAP model that has gained recent popularity~\cite{nissim2014distributed,vstolba2014relaxation,brafman2013complexity,zhang2014formal,komenda2013domain,torreno2014fmap,maliah2014privacyPreserving,maliah2015privacy,torreno2015global,jakubuv2015multiagent}.  In fact, there is an international competition for comparing MA-STRIPS planners~\cite{vstolba2015competition}. 
-The competition organizers graciously made the code for all competing planning algorithms as well as all the problems used in this competition available to the community. This will allow us to compare the IOP-based MA-STRIPS planning algorithms we will develop against the state-of-the-art MA-STRIPS planners on a standard set of benchmark domains. 
+The competition organizers graciously made the code for all competing planning algorithms as well as all the problems used in this competition available to the community. This will allow us to compare the IOP-based MA-STRIPS planning algorithms we will develop against the state-of-the-art MA-STRIPS planners on a standard set of benchmark domains. MA-STRIPS serves as a ``lab'' setting, and we intend to evaluate IOP on a range of problems and settings listed below.
 
-% We chose MA-STRIPS because....
-\subsubsection{Evaluation on Other MAP Models}
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.8\columnwidth]{MotionPrimitives_cropped2} 
-\vspace{-0.4cm}
- \caption{An illustration of search-based planning with motion primitives (from slides by Maxim Likhachev)} \label{fig:motion-primitives}
-\end{figure}
-
-
+{\bf 1. Search-Based Planning for Teams of Robots.}
 % We will evaluate on search-based multi-robot planning
-Planning for a team of robots provides one of the motivations for this research. 
-However, implementing IOP on real robots is beyond the scope of this research and requires additional expertise and funds. As a step towards realizing IOP on robot teams, we will implement IOP on top of the Search-Based Planning Library (SBPL)~\cite{likhachev2010sbpl}, a successful framework for applying search-based planning algorithms for robots. 
-Search-based planning is an established approach in robotics where a finite set of motion primitives are defined for each robot (see Figure~\ref{fig:motion-primitives}(left)). 
-%Search-based planning is an established approach in robotics where a finite set of motion primitives are defined for each robot. 
-This reduces planning for robots to searching for sequences of motion primitives (Figure~\ref{fig:motion-primitives}(middle)), allowing the use of heuristic search algorithms. 
-%This reduces planning for robots to searching for sequences of motion primitives, allowing the use of heuristic search algorithms. 
-SBPL was used in a range of robotic platforms such as a single robotic arm~\cite{stern2014potential,aine2015learning}, multiple robotic arms~\cite{cohen2014planning}, Willow Garage’s PR2~\cite{phillips2012graphs}, and an autonomous vehicle~\cite{likhachev2009planning}. SBPL is integrated with the Robotic Operating System (ROS), allowing relatively easy deployment to real robots and integration with standard ROS simulators. We intend to implement IOP on top of SBPL, extending SBPL to allow multi-robot search-based planning (MR-SBPL). This will have the additional benefit of facilitating researchers from the automated planning and heuristic search communities to 
-develop search-based planners for multi-robot domains. In this effort, we will collaborate with the search-based planning laboratory in CMU, which is the research group that has developed SBPL (see attached letter of support by Prof. Maxim Likhachev). 
+%Planning for a team of robots provides one of the motivations for this research. Implementing IOP on real robots is beyond the scope of this research and requires additional expertise and funds. As a step towards realizing IOP on robot teams, we will implement IOP on top of the Search-Based Planning Library (SBPL)~\cite{likhachev2010sbpl}, a successful framework for applying search-based planning algorithms for robots.
+Implementing IOP on real robots is beyond the scope of this research and requires additional expertise and funds. Bust, as a step towards realizing IOP on robot teams we will implement IOP on top of the Search-Based Planning Library (SBPL)~\cite{likhachev2010sbpl}, a successful framework for applying search-based planning algorithms for robots. 
+SBPL is integrated with the Robotic Operating System (ROS), to allow relatively easy deployment to real robots and integration with standard ROS simulators. It was used in a range of robotic platforms such as a single robotic arm~\cite{stern2014potential,aine2015learning}, multiple robotic arms~\cite{cohen2014planning}, Willow Garage’s PR2~\cite{phillips2012graphs}, and an autonomous vehicle~\cite{likhachev2009planning}. 
 
-%In an unpublished preliminary work, we implemented a simple version of IOP in a that only handled negative PIFs, and does so only by the ``constraint \& replan'' method. 
-We have started to develop a multi-robot extension of SBPL and in a preliminary study compared a simple A* planning algorithm with a simple version of IOP, in which only negative PIFs are considered and are resolved using only the ``constraint \& replan''  method. The particular domain was a MAPF variant: every robot had a goal location it needed to reach, and the state variables were $x$, $y$, and $\theta$, where $\theta$ is the orientation of the robot. On an experiment with 10 robots on randomly chosen start and goal locations that were 10 steps afar, we observed a speedup of a factor of 2 for IOP over A*. In the proposed research, we will continue this study, including to MR-SBPL domains with positive PIFs and non-static allocation of goals to agents.
+We have started to develop a multi-robot extension of SBPL (MR-SBPL) and in a preliminary study compared planning with \astar\ to a simplified version of IOP. The particular domain was a MAPF variant: every robot had a goal location it needed to reach, and the state variables were $x$, $y$, and $\theta$, where $\theta$ is the orientation of the robot. On an experiment with 10 robots on randomly chosen start and goal locations that were 10 steps afar, we observed a speedup of a factor of 2 for IOP over \astar . In the proposed research, we will continue this study, extending MR-SBPL to richer domains with positive PIFs and non-static allocation of goals to agents. Note that we do not presume to develop real-life robotic applications in the proposed research as that would require dealing with various control issues (action failures, inaccurate sensors etc.). 
 
-% Why it is important
-%There are many differences between MAP for MA-STRIPS and MAP for multi-robot search-based planning (MR-SBPL). This includes the possibility of failures, stochastic action outcomes, and partial state observability.  All these differences contribute to  There are methods for handling these differences, using more complex planning se differences  
-%We will  The main differences between MAP for MA-STRIPS and MAP for search-based multi-robot planning is that in MA-STRIPS the preconditions and effects of agents' actions are given in propositional logic while in robotics they are mathematical formulas. This means that different sets of heuristics will be needed. 
+{\bf 2. Planning for Data Mules.} Data mules is a rising architecture for maintaining low-cost high latency networks, where mobile agents carry data between the network nodes~\cite{shah2003data}. %E.g., when  deploying a communication network is not feasible.
+There are several planning tasks for data mules, including route planning~\cite{sugihara2011path} and handling network node failures~\cite{crowcroft2016using}. We will evaluate IOP against existing solutions for data mules problems. This will provide both practical benefit to real-life application as well as help cross fertilization with other communities.
 
-%Implementing our MAP algorithms for MR-SBPL poses additional challenges over implementing them in MA-STRIPS. In MA-STRIPS the domain is given in propositional logic, and can thus be analyzed more easily. By contrast, in MR-SBPL the domain may contain complex algorithms, e.g., for performing collision checking, and thus may be more difficult to analyze.  Note that we do not presume to develop real-life robotic applications in the proposed research as that would require dealing with various control issues (action failures, inaccurate sensors etc.). If time permits, we will also explore implementing IOP in more complex MAP models that directly address these issues during planning, like Dec-POMDP~\cite{bernstein2002complexity}, building on the MADP toolbox of Dec-POMDP algorithms~\cite{MADPToolbox-0.3.1}.
 
-Note that we do not presume to develop real-life robotic applications in the proposed research as that would require dealing with various control issues (action failures, inaccurate sensors etc.). In addition, we will explore using IOP for single agent planinnig as well, building on automated methods to decompose planning problems to MAP~\cite{nissim2012tunneling}. Lastly, we will also implement IOP in more complex MAP models that directly address these issues during planning such as Dec-POMDP~\cite{bernstein2002complexity}, building on the MADP toolbox of Dec-POMDP algorithms~\cite{MADPToolbox-0.3.1}.
 
-%While there are more complex MAP formalisms that directly address these issues during planning, like Dec-POMDP~\cite{bernstein2002complexity}, they often fail to scale, explaining the popularity of search-based planning in robots. 
+{\bf 3. Decentralized POMDP.} We will implement IOP in more complex MAP models that directly address these issues during planning such as Dec-POMDP~\cite{bernstein2002complexity}, building on the MADP toolbox.  % of Dec-POMDP algorithms~\cite{MADPToolbox-0.3.1}. 
+
+
+
+{\bf 4. Single agent search.} As noted above, we also intend to experiment with applying IOP to solve single agent problems. To this end we will experiment on standard domain-independent planning problems, and explore  using IOP with various domain decomposition methods~\cite{nissim2012tunneling,amir2003factored}. 
+
+
+
+
+
+%\begin{figure}[t]
+%\centering
+%\includegraphics[width=0.8\columnwidth]{MotionPrimitives_cropped2} 
+%\vspace{-0.4cm}
+% \caption{An illustration of search-based planning with motion primitives (from slides by Maxim Likhachev)} \label{fig:motion-primitives}
+%\end{figure}
+
+
 
 \section{Available Resources}
 Selected graduate students from our research group, which  currently consists 10 graduate students will participate in the proposed research. The facilities available at BGU for PI Stern's lab will be available for this research, including basic office facilities and a server for performing heavy duty computations. 
 
 
-
-% Can be probably optimal
-%The uncertainty of Dec-POMDP models can be further integrated into the IOP framework by generalizing the notions of the $cbag$ predicate and execution costs ($xcost$). Instead of a binary $cbag$ predicate which is true if the agents are able to resolve an interaction failure during execution, an uncertainty-aware version of the $cbag$ predicate is actually a function stating the probability of the set of agents are able to resolve the failure. Such integration of uncertainty into IOP tree nodes also enable a completely different type of suboptimality that can be introduced to save planning time -- ignore interaction failures to save planning time at the cost of increasing the probability that the resulting plan would not be applicable. To further save planning time, the two types of suboptimality can be combined: searching the IOP tree and halting when an IOP tree node have been found that has high probability to result in an execution with cost that is approximately optimal. 
-
-%This builds on our work on Probabilistic Recipe Trees~\cite{kamar2013modeling}.
-%Similar to the MA-STRIPS evaluation method described above, we intend to evaluate the developed Dec-POMDP planners against state-of-the-art Dec-POMDP planners~\cite{dibangoye2014exploiting,oliehoek2012influenceBased,wu2013monte}. In addition, we also evaluate our approach against online Dec-POMDP solvers that interleave planning and execution~\cite{wu2011online,kwak2011teamwork}.
-
-
-
-%\section{Risk Analysis}
-
-%4. Risk analysis and alternative paths that will be followed if the suggested research  plan fails (only in those fields in which it is relevant);
-
-%\section{Collaboration between the Principal Investigators}
-% An account of available U.S. and Israeli resources, including all personnel and equipment relevant to the research;
-%Developing the IOP framework for MAP and demonstrating its applicability is a formidable challenge that requires a combination of  expertise. PI Stern has a strong record in developing domain specific multi-agent planning algorithms~\cite{sharon2012meta,sharon2012cbs,sharon2013increasing,maliah2014privacyPreserving,barer2014suboptimal-socs} and in developing algorithms that achieve various forms of suboptimality~\cite{stern2014potential,stern2011probably,stern2012search,thayer2012faster}. 
-%In addition, PI Stern has also developed several algorithms for predicting search effort and estimating solution cost~\cite{stern2014potential,stern2011probably,stern2012search,thayer2012faster}, both of which are required for developing IOP. 
-%PI Grosz has developed some of the most influential works on collaborative activity~\cite{grosz1996collaborative,grosz1999evolution,grosz1999planning} and is well known for her expertise in multi-agent systems and formalisms~\cite{babaian2002writer,grosz1982dialogic,kamar2009incorporating,gal2010agent,kamar2013modeling,amir2014ai}.
-
-
-%Thus, PI Stern will be responsible for developing the  planning algorithms and PI Grosz will provide the broader multi-agent systems perspective as well as the required aspects of collaboration theory, such as characterizing and identifying different types of interactions and levels of coordination. The empirical evaluation of IOP will be co-designed by the PIs. PI Stern will be responsible for implementing and running the experiments.  Funding is therefore requested for PI Stern to support graduate students who will implement and execute these experiments. 
-
-
-%The roles of the PIs are thus highly interwoven and synergestic and the planned format of collaboration consists of a bi-weekly Skype meeting of the two PIs to update one another on progress and to conduct research-related discussions. In addition, we plan two research meetings per year, one in the US and one in Israel. When possible, we will also meet during top-ranking conferences, which both PIs usually attend (e.g., AAAI, IJCAI, or AAMAS). 
-
-%In the second year of the proposed research, we plan a larger research meeting that will also include two graduate students from PI Stern's group to discuss the results and develop further the planned research. These meetings will take place either at Harvard University or at Ben Gurion University of the Negev, with support from the respective universities. In addition, large scale experiments will be run on the servers of PI Stern at BGU. 
-
-  
-% History of collaboration
-%This proposal includes many of the ideas developed while PI Stern was a post-doc in PI Grosz's group. After a short post-doc period of one year, PI Stern accepted a faculty position at BGU and thus much of the two PIs' planned collaborative work~\cite{amir2013collaborative,stern2013augie,amir2014share} was delayed. Now, PI Stern is a fully integrated faculty member at BGU, and BSF funding would enable the two PIs to continue their collaboration and to capitalize on their prior joint work. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-%{\bf Barbara J. Grosz:} Barbara Grosz .... [[lot's of good stuff]]
-
-%{\bf Roni Stern:} Roni Stern ... [[some nice stuff]]]
-
-
-%\section{Notes}
-
-%On task allocation
-%more or less collaborative, ... Need to clarify that collaborate, coordinate, in the same environment agnostic different forms
-% p.6: make active and not passive(we cdevelop, challenge ....
-%IOP requires a way to deal (in the previous part), we will
-%we prpose to develop a novel...that depoys one of two methhods;... develop....)
-%node represents a triple (X,Y,Z) or
-%node represents plans associated ....
-%the approach ..... for the decision making!
-
-
-%p.7: ignoring falirue during planing, assuming the agents have tcapabilites to detect and avoid it 
-%3.1 too
-%...."detect collisions" before happen!
-%pre 4: big research abstractions, other areas of search , problem make clear!!!
-
-% 4.2.: building on our prior work and others (instead of with) we will invesitage 2 complemantary ways to allow for subopt in IOP
-
-%p.10: the challenge for IOP is no obvious h function, and therefore we can't use bla bla
-%2 options: better h or better search
-%... propose, based on EES...
-%SEC 5:
 
 
 

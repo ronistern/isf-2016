@@ -1,0 +1,81 @@
+\documentclass[11pt]{article}
+
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+\usepackage{titling}
+\usepackage{times}
+\usepackage{anysize}
+\marginsize{2cm}{2cm}{2cm}{3cm}
+%\onehalfspace
+%\doublespace
+\setlength{\parindent}{0.8cm}
+%\setlength{\parskip}{0.2\baselineskip}
+%\setlength{\topmargin}{2cm}
+%\setlength{\textheight}{25cm}
+%\setlength{\textwidth}{14cm}
+%\setlength{\oddsidemargin}{2cm}
+%\setlength{\evensidemargin}{2cm}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\newcommand{\note}[1]{\textbf{\textit{#1}}}
+\newcommand{\astar}{A$^*$}
+\newcommand{\subtitle}[1]{%
+  \posttitle{%
+    \par\end{center}
+    \begin{center}\large#1\end{center}
+    \vskip0.5em}%
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{observation}{Observation}
+\newtheorem{corollary}{Corollary}
+
+\linespread{1.3}
+
+\lhead{Interaction Oriented Multi-Agent Planning} \rhead{ISF 210/17 -- Roni Stern}
+\cfoot{\thepage} 
+%\cfoot{} 
+\pagenumbering{gobble}
+%\pagenumbering{Roman}
+
+\begin{document}
+
+%\title{Scientific Abstract\\ Interaction Oriented Multi-Agent Planning}
+%\subtitle{ISF Application No. 720/16}
+%\date{\vspace{-0.5cm}}
+%\author{Roni Stern \\ Ben Gurion University of the Negev}
+%\maketitle
+
+\noindent {\Large Scientific Abstract: Interaction Oriented Multi-Agent Planning}\\
+\vspace{0.25cm}
+\noindent {\large ISF Application No. 210/17}\\
+\vspace{0.25cm}
+\noindent {\large Roni Stern,  Ben Gurion University of the Negev}
+
+
+
+%\section*{Abstract}
+% From the BSF guidelines: An abstract of the proposed research of about 250 words or less is required. The abstract should be informative to scientists in the same or related fields. A statement of the project's potential contribution to the research done in that field should be included.
+
+
+Planning for multiple agents is a key task in the design of multi-agent systems. It is inherently more difficult than planning for a single agent, because agents need to reason not only about individual plans but also about potential {\em interactions} between them, i.e., finding ways in which agents can help each other (positive interactions) and making sure that executing one plan does not prevent the execution of another (negative interactions). Most existing multi-agent planners embody the assumption that all potential inter-agent interactions are easily identified and must be explicitly reasoned about. This severely limits the applicability of current approaches, because the number of potential interactions can be large and the complexity of multi-agent planning is, roughly, exponential in the number of interactions reasoned about. 
+
+
+We propose a novel algorithmic framework for multi-agent planning, called {\bf interaction-oriented planning (IOP)}, that addresses the lack of scalability of current multi-agent planners by carefully considering which interactions should be reasoned about, how to reason about them, and when. In developing IOP, we will focus on  the following key, fundamental capabilities: 
+(1) algorithms for identifying and classifying potential inter-agent interactions that are relevant for planning,
+(2) cost-aware coordination mechanisms for handling inter-agent interactions when planning,
+(3) meta-reasoning algorithms for deciding rationally which potential inter-agent interactions can and should be ignored when planning and handled during execution, and (4) principled methods for deciding when a sufficiently coordinated and effective joint plan is found. 
+While some of IOP's algorithmic components have been previously proposed, they have not been put together in a unifying framework and we intend to do so.
+
+ 
+
+In developing IOP, we will deepen the theoretical understanding of how different ways in which agents can interact with each other affect planning, which will enable generalizing techniques from domain-specific multi-agent planning algorithms. We will extend collaboration theories designed to determine when interactions {\bf must be considered} during planning to novel theories for determining when interaction {\bf should be considered} during planning, taking into consideration the cost of not reasoning about them during planning. This will build on the distinction between generating a plan and knowing that a plan can be generated (established by the SharedPlan theory). These theoretical contributions are expected to facilitate planning for larger and more diverse groups of agents, as will be demonstrated empirically on (1) benchmark domain-independent multi-agent planning problems, (2) realistic multi-robot simulated environment, and (3) routing and maintenance planning for data mules. %Additionally, we will explore how IOP can be help single agent planning, where 
+
+
+%In the development of IOP, we will extend  An important theoretical contribution of the proposed research is in extending collaboration theories designed to mining when interactions {\bf must be considered} during planning to novel theories for  determining when interaction {\bf should be considered} during planning, taking into consideration the cost of not reasoning about them during planning. This will build on the distinction between generating a plan and knowing that a plan can be generated (established by the SharedPlan theory), and extends it to differentiate between generating a plan, estimating the cost of generating, and estimating the cost of executing it. 
+
+
+
+%IOP-based planners are expected to facilitate planning for larger and more diverse groups of agents. In addition, the proposed research will deepen the theoretical understanding of collaborative behavior by exploring different types of interaction and their impact on planning, and by studying the relation between plan cost, reliability, and planning time.
+
+\end{document}

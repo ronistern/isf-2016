@@ -5,7 +5,6 @@
 \usepackage{times}
 \usepackage{anysize}
 \usepackage{graphicx}
-\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
 
 
 \marginsize{2cm}{2cm}{2cm}{3cm}
@@ -62,7 +61,7 @@
 
 
 % The MAP problem and how much it is important and applied 
-Imagine a smart home with a vacuum cleaning robot, a floor scrubbing robot, and a floor mopping robot (Figure~\ref{fig:example} illustrates this setting). This team of robots is committed to the overall mission of cleaning the house, with each robot having a specific task to perform: vacuum cleaning, floor scrubbing, or floor mopping. To accomplish their tasks, these robots must plan, either upfront or on-the-fly, the individual actions they intend to perform. In many cases, they must also coordinate these individual actions if they are to succeed in their overall mission. Similar issues arise in many other multi-agent systems (MAS), including automated warehouses~\cite{martinez2010autonomous,vivaldini2011intelligent} and teams of delivery robots~\cite{coltin2014scheduling}.  Analogous multi-agent planning (MAP) problems also arise in non-robotic scenarios, including teams of web crawlers~\cite{chiu2005towards,pant2002myspiders,sato2012agent} and digital entertainment~\cite{jaklin2013way}.  
+Imagine a smart home with a vacuum cleaning robot, a floor scrubbing robot, and a floor mopping robot (Figure~\ref{fig:example} illustrates this setting). This team of robots is committed to the overall mission of cleaning the house, with each robot having a specific task to perform: vacuum cleaning, floor scrubbing, or floor mopping. To accomplish their tasks, these robots must plan, either upfront or on-the-fly, the individual actions they intend to perform. In many cases, they must also coordinate these individual actions if they are to succeed in their overall mission. Similar issues arise in many other multi-agent systems (MAS), including automated warehouses~\cite{martinez2010autonomous} and teams of delivery robots~\cite{coltin2014scheduling}.  Analogous multi-agent planning (MAP) problems also arise in non-robotic scenarios, including teams of web crawlers~\cite{chiu2005towards,pant2002myspiders,sato2012agent} and digital entertainment~\cite{jaklin2013way}.  % ,vivaldini2011intelligent
 %groups of AI characters in digital role-playing games~\cite{mott2006u,botea2013pathfinding,jaklin2013way}.  
 %The importance of adequate MAP mechanisms for group activities is recognized in a range of formal models of teamwork~\cite{grant2005formalApproaches} and is becoming increasingly important with the greater prevalence of household and industrial robots as well as other types of multi-agent systems. 
 The importance of adequate MAP mechanisms for group activities is recognized in formal models of teamwork and is becoming increasingly important with the greater prevalence of MAS in practical applications.  %household and industrial robots as well as other types of MAS. %~\cite{grant2005formalApproaches}
@@ -377,7 +376,7 @@ Single-agent planning algorithms these days are very efficient, so generating pr
 \centering
 \includegraphics[width=0.8\columnwidth]{free-space_cropped.pdf}%
 \caption{\small An example of generating provisional plans with the generalized free space assumption on a simplified version of our smart home example in Figure~\ref{fig:example} (using the same notations). 
-Each provisional plan is displayed (robot V's plan in the upper line and robot S's plan in the lower line). The generalized free space assumption manifests in that (1) both plans ignore collisions and (2) robot S assumes all tiles are vacuumed. Indeed, 3 PIFs exists in this provisional plan: tiles (2,1) and (2,2) planned for scrubbing at time 0 and 1 will not be vacuumed in time (positive PIF) and a collision is expected at time 3 (negative PIF). Resolving them is discussed in later sections.}}
+Each provisional plan is displayed (robot V's plan in the upper line and robot S's plan in the lower line). The generalized free space assumption manifests in that (1) both plans ignore collisions and (2) robot S assumes all tiles are vacuumed. Indeed, 3 PIFs exists in this provisional plan: tiles (2,1) and (2,2) planned for scrubbing at time 0 and 1 will not be vacuumed in time (positive PIF) and a collision is expected at time 3 (negative PIF). Resolving them is discussed in later sections.}
 \label{fig:free-space}
 \end{figure}
 
@@ -615,7 +614,7 @@ Above we discussed ways to develop a lower bounding $h(n)$ and shown that in som
 
 \subsection{Methodology and Experimental Evaluation}
 \label{sec:methodology}
-The main MAP model we will use for evaluating IOP and its different components is MA-STRIPS~\cite{brafman2013complexity}. MA-STRIPS can be viewed as the simplest extension of the classical STRIPS planning formalism. An MA-STRIPS problem is defined exactly like a STRIPS problem, with the only difference being that in MA-STRIPS each agent has a set of actions it can perform. MA-STRIPS is a relatively recent MAP model that has gained recent popularity~\cite{nissim2014distributed,vstolba2014relaxation,brafman2013complexity,zhang2014formal,komenda2013domain,torreno2014fmap,maliah2014privacyPreserving,maliah2015privacy,torreno2015global,jakubuv2015multiagent}.  In fact, there is an international competition for comparing MA-STRIPS planners~\cite{vstolba2015competition}. 
+The main MAP model we will use for evaluating IOP and its different components is MA-STRIPS~\cite{brafman2013complexity}. MA-STRIPS can be viewed as the simplest extension of the classical STRIPS planning formalism. An MA-STRIPS problem is defined exactly like a STRIPS problem, with the only difference being that in MA-STRIPS each agent has a set of actions it can perform. MA-STRIPS is a relatively recent MAP model that has gained recent popularity~\cite{nissim2014distributed,vstolba2014relaxation,brafman2013complexity,zhang2016formal,komenda2013domain,torreno2014fmap,maliah2014privacyPreserving,maliah2015privacy,torreno2015global,jakubuv2015multiagent}.  In fact, there is an international competition for comparing MA-STRIPS planners~\cite{vstolba2015competition}. 
 The competition organizers graciously made the code for all competing planning algorithms as well as all the problems used in this competition available to the community. This will allow us to compare the IOP-based MA-STRIPS planning algorithms we will develop against the state-of-the-art MA-STRIPS planners on a standard set of benchmark domains. MA-STRIPS serves as a ``lab'' setting, and we intend to evaluate IOP on a range of problems and settings listed below.
 
 {\bf 1. Search-Based Planning for Teams of Robots.}
@@ -660,9 +659,9 @@ There are several planning tasks for data mules, including route planning~\cite{
 
 \pagebreak
 \small
-\bibliographystyle{plain}
+\bibliographystyle{abbrv}
 %\bibliography{library-ast}
-\bibliography{library}
+\bibliography{library-ast2}
 
 \end{document}
 
